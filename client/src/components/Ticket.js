@@ -8,6 +8,8 @@ export default function Ticket({
   content,
   creationTime,
   labels,
+  ticket,
+  hide,
 }) {
   return (
     <div className="ticket">
@@ -18,6 +20,9 @@ export default function Ticket({
         creationTime={creationTime}
       />
       <Labels labels={labels} />
+      <button className="hideTicketButton" onClick={() => hide(ticket)}>
+        hide
+      </button>
     </div>
   );
 }

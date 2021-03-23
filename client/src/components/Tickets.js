@@ -1,22 +1,22 @@
 import React from "react";
 import Ticket from "./Ticket";
 
-export default function Tickets({ tickets }) {
+export default function Tickets({ tickets, hide }) {
   return (
     <div>
       {tickets &&
-        tickets.map(
-          ({ title, userEmail, content, creationTime, labels }, i) => (
-            <Ticket
-              key={i}
-              title={title}
-              userEmail={userEmail}
-              content={content}
-              creationTime={creationTime}
-              labels={labels}
-            />
-          )
-        )}
+        tickets.map((ticket, i) => (
+          <Ticket
+            key={i}
+            title={ticket.title}
+            userEmail={ticket.userEmail}
+            content={ticket.content}
+            creationTime={ticket.creationTime}
+            labels={ticket.labels}
+            ticket={ticket}
+            hide={hide}
+          />
+        ))}
     </div>
   );
 }
