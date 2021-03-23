@@ -1,6 +1,8 @@
 import React from "react";
 import Content from "./Content";
-import Labels from "./Labels";
+import Info from "./Info";
+
+import "../styles/Ticket.css";
 
 export default function Ticket({
   title,
@@ -13,13 +15,8 @@ export default function Ticket({
 }) {
   return (
     <div className="ticket">
-      <Content
-        title={title}
-        userEmail={userEmail}
-        content={content}
-        creationTime={creationTime}
-      />
-      <Labels labels={labels} />
+      <Content title={title} content={content} />
+      <Info labels={labels} userEmail={userEmail} creationTime={creationTime} />
       <button className="hideTicketButton" onClick={() => hide(id)}>
         hide
       </button>

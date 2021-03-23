@@ -3,6 +3,8 @@ import Label from "./Label";
 
 export default function Labels({ labels }) {
   return (
-    <>{labels && labels.map((label, i) => <Label key={i} label={label} />)}</>
+    <span className="labels">
+      {labels && labels.map((label, i) => <Label key={i} label={label} />)}
+    </span>
   );
 }

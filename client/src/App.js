@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import Tickets from "./components/Tickets";
-import SearchArea from "./components/SearchArea";
+import Header from "./components/Header";
 
 const axios = require("axios").default;
 
@@ -25,7 +25,7 @@ function App() {
     setHiddenTickets(newHiddenTickets);
   }
 
-  function restore() {
+  function restoreTicketsList() {
     setTickets(restoreList);
     setHiddenTickets([]);
   }
@@ -47,11 +47,11 @@ function App() {
 
   return (
     <div className="App">
-      <SearchArea filterTickets={filterTickets} />
-      <h2 id="hideTicketsCounter">{hiddenTickets.length}</h2>
-      <button id="restoreHideTickets" onClick={restore}>
-        restore
-      </button>
+      <Header
+        filterTickets={filterTickets}
+        restoreTicketsList={restoreTicketsList}
+        hiddenTickets={hiddenTickets}
+      />
       <Tickets tickets={tickets} hide={hide} />
     </div>
   );

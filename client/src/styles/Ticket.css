@@ -1,0 +1,23 @@
+.ticket {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.ticketContent {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.ticketInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hideTicketButton {
+  position: absolute;
+  top: 10%;
+  right: 2%;
+}
