@@ -1,5 +1,6 @@
 import React from "react";
 import Label from "./Label";
+import "../styles/Labels.css";
 
 export default function Labels({ labels }) {
   return (

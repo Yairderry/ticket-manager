@@ -10,10 +10,10 @@ export default function Header({
     <header>
       <h1>Ticket Manager</h1>
       <SearchArea filterTickets={filterTickets} />
-      <h2>
-        Hidden tickets:{" "}
+      <p>
+        Hidden Tickets:{" "}
         <span id="hideTicketsCounter">{hiddenTickets.length}</span>
-      </h2>
+      </p>
       <button id="restoreHideTickets" onClick={restoreTicketsList}>
         restore
       </button>

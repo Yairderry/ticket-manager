@@ -1,9 +1,11 @@
 import React from "react";
 import Ticket from "./Ticket";
 
+import "../styles/Tickets.css";
+
 export default function Tickets({ tickets, hide }) {
   return (
-    <div>
+    <div className="tickets">
       {tickets &&
         tickets.map(
           ({ title, userEmail, content, creationTime, labels, id }, i) => (
