@@ -11,17 +11,15 @@ function App() {
   const [restoreList, setRestore] = useState([]);
 
   function showNotHiddenTickets(updatedTicketsList, hiddenTicketsList) {
-    const filteredList = updatedTicketsList.filter((ticket) => {
-      return !JSON.stringify(hiddenTicketsList).includes(
-        JSON.stringify(ticket)
-      );
-    });
+    const filteredList = updatedTicketsList.filter(
+      ({ id }) => !hiddenTicketsList.includes(id)
+    );
 
     setTickets(filteredList);
   }
 
-  function hide(ticket) {
-    const newHiddenTickets = hiddenTickets.concat([ticket]);
+  function hide(id) {
+    const newHiddenTickets = hiddenTickets.concat(id);
 
     showNotHiddenTickets(tickets, newHiddenTickets);
     setHiddenTickets(newHiddenTickets);

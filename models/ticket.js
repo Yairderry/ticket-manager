@@ -9,6 +9,13 @@ const ticketSchema = new mongoose.Schema({
   labels: [{ type: String }],
 });
 
+ticketSchema.set("toJSON", {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString();
+    delete returnedObject.__v;
+  },
+});
+
 const Ticket = mongoose.model("Ticket", ticketSchema);
 
 module.exports = Ticket;
