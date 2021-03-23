@@ -10,7 +10,7 @@ export default function Ticket({
   labels,
 }) {
   return (
-    <>
+    <div className="ticket">
       <Content
         title={title}
         userEmail={userEmail}
@@ -18,6 +18,6 @@ export default function Ticket({
         creationTime={creationTime}
       />
       <Labels labels={labels} />
-    </>
+    </div>
   );
 }

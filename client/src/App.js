@@ -7,13 +7,13 @@ const axios = require("axios").default;
 
 function App() {
   const [tickets, setTickets] = useState([]);
-  const [searchText, setSearchText] = useState("");
 
   function filterTickets(e) {
     axios.get(`/api/tickets?searchText=${e.target.value}`).then(({ data }) => {
       setTickets(data);
     });
   }
+
   // get all tickets when component mounted
   useEffect(() => {
     axios.get("/api/tickets").then(({ data }) => {
@@ -23,7 +23,7 @@ function App() {
 
   return (
     <div className="App">
-      <SearchArea searchText={searchText} filterTickets={filterTickets} />
+      <SearchArea filterTickets={filterTickets} />
       <Tickets tickets={tickets} />
     </div>
   );
