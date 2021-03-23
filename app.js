@@ -8,15 +8,20 @@ app.use(express.static("client/build"));
 // GET methods
 app.get("/api/tickets", (req, res) => {
   const { searchText } = req.query;
-  Ticket.find({ title: new RegExp(searchText, "gi") }).then((data) => {
-    res.json(data);
-  });
+  Ticket.find({ title: new RegExp(searchText, "i") })
+    .then((data) => {
+      res.json(data);
+    })
+    .catch(() => {
+      return res
+        .status(500)
+        .json({ error: "There was an error in our servers" });
+    });
 });
 
 // PATCH methods
 app.patch("/api/tickets/:ticketId/done", (req, res) => {
   const { ticketId } = req.params;
-  console.log(ticketId);
   Ticket.findByIdAndUpdate(ticketId, { $set: { done: true } }, { new: true })
     .then((data) => {
       if (!data) return res.status(404).json({ error: "Ticket Not Found" });
@@ -25,7 +30,11 @@ app.patch("/api/tickets/:ticketId/done", (req, res) => {
     })
     .catch((err) => {
       if (err.name === "CastError")
-        res.status(400).json({ error: err.message });
+        return res.status(400).json({ error: "Invalid id" });
+
+      return res
+        .status(500)
+        .json({ error: "There was an error in our server" });
     });
 });
 
@@ -39,7 +48,11 @@ app.patch("/api/tickets/:ticketId/undone", (req, res) => {
     })
     .catch((err) => {
       if (err.name === "CastError")
-        res.status(400).json({ error: err.message });
+        return res.status(400).json({ error: "Invalid id" });
+
+      return res
+        .status(500)
+        .json({ error: "There was an error in our server" });
     });
 });
 

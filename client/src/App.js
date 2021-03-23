@@ -1,23 +1,30 @@
-import logo from "./logo.svg";
 import "./App.css";
+import { useState, useEffect } from "react";
+import Tickets from "./components/Tickets";
+import SearchArea from "./components/SearchArea";
+
+const axios = require("axios").default;
 
 function App() {
+  const [tickets, setTickets] = useState([]);
+  const [searchText, setSearchText] = useState("");
+
+  function filterTickets(e) {
+    axios.get(`/api/tickets?searchText=${e.target.value}`).then(({ data }) => {
+      setTickets(data);
+    });
+  }
+  // get all tickets when component mounted
+  useEffect(() => {
+    axios.get("/api/tickets").then(({ data }) => {
+      setTickets(data);
+    });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SearchArea searchText={searchText} filterTickets={filterTickets} />
+      <Tickets tickets={tickets} />
     </div>
   );
 }
