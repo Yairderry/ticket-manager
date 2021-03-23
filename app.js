@@ -6,7 +6,8 @@ const app = express();
 app.use(express.static("client/build"));
 
 app.get("/api/tickets", (req, res) => {
-  Ticket.find().then((data) => {
+  const { searchText } = req.query;
+  Ticket.find({ title: new RegExp(searchText, "gi") }).then((data) => {
     res.json(data);
   });
 });
