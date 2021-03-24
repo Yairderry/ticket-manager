@@ -7,7 +7,7 @@ export default function SearchArea({ filterTickets }) {
         id="searchInput"
         name="SearchText"
         placeholder="Filter tickets"
-        onChange={filterTickets}
+        onChange={(e) => filterTickets(e.target)}
       />
     </>
   );

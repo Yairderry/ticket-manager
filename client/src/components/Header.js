@@ -6,10 +6,11 @@ export default function Header({
   filterTickets,
   hiddenTickets,
   restoreTicketsList,
+  handleSubmit,
 }) {
   return (
     <header>
-      <NewTicketForm />
+      <NewTicketForm handleSubmit={handleSubmit} />
       <h1>Ticket Manager</h1>
       <SearchArea filterTickets={filterTickets} />
       <p>

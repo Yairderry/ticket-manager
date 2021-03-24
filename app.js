@@ -4,6 +4,7 @@ const Ticket = require("./models/ticket");
 const app = express();
 
 app.use(express.static("client/build"));
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // GET methods
@@ -68,9 +69,8 @@ app.post("/api/tickets/new-ticket", (req, res) => {
 
   ticket
     .save()
-    .then(() => {
-      res.writeHead(302, { Location: "/" });
-      res.end();
+    .then((savedTicket) => {
+      return res.json(savedTicket);
     })
     .catch((err) => {
       if (err.name === "ValidationError")

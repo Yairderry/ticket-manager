@@ -18,10 +18,17 @@
   border: 1px solid black;
   border-radius: 5px;
   padding: 20px;
+  position: relative;
 }
 
 .newTicketInput {
   display: block;
+}
+
+.exitButton {
+  position: absolute;
+  top: 5px;
+  right: 7px;
 }
 
 .hideForm {
