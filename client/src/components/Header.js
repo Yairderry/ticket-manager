@@ -1,4 +1,5 @@
 import React from "react";
+import NewTicketForm from "./NewTicketForm";
 import SearchArea from "./SearchArea";
 
 export default function Header({
@@ -8,6 +9,7 @@ export default function Header({
 }) {
   return (
     <header>
+      <NewTicketForm />
       <h1>Ticket Manager</h1>
       <SearchArea filterTickets={filterTickets} />
       <p>
@@ -15,7 +17,14 @@ export default function Header({
         <span id="hideTicketsCounter">{hiddenTickets.length}</span>
       </p>
       <button id="restoreHideTickets" onClick={restoreTicketsList}>
-        restore
+        Restore
+      </button>
+      <button
+        onClick={(e) => {
+          e.target.parentElement.firstChild.classList.remove("hideForm");
+        }}
+      >
+        Add Ticket
       </button>
     </header>
   );

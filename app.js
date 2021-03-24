@@ -4,6 +4,7 @@ const Ticket = require("./models/ticket");
 const app = express();
 
 app.use(express.static("client/build"));
+app.use(express.urlencoded({ extended: false }));
 
 // GET methods
 app.get("/api/tickets", (req, res) => {
@@ -52,7 +53,32 @@ app.patch("/api/tickets/:ticketId/undone", (req, res) => {
 
       return res
         .status(500)
-        .json({ error: "There was an error in our server" });
+        .json({ error: "There was an error in our servers" });
+    });
+});
+
+app.post("/api/tickets/new-ticket", (req, res) => {
+  const { labels } = req.body;
+
+  const userEmail = req.body.userEmail ? req.body.userEmail : undefined;
+  const title = req.body.title ? req.body.title : undefined;
+  const content = req.body.content ? req.body.content : undefined;
+
+  const ticket = new Ticket({ labels, content, title, userEmail });
+
+  ticket
+    .save()
+    .then(() => {
+      res.writeHead(302, { Location: "/" });
+      res.end();
+    })
+    .catch((err) => {
+      if (err.name === "ValidationError")
+        return res.status(400).json({ error: err.message });
+
+      return res
+        .status(500)
+        .json({ error: "There was an error in our servers" });
     });
 });
 
