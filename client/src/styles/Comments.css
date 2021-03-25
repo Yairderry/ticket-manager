@@ -1,3 +1,8 @@
+.comments {
+  margin: 5px;
+  border-top: 1px solid black;
+}
+
 .comment {
   text-align: left;
   display: flex;
@@ -5,9 +10,6 @@
   align-items: flex-start;
   justify-content: flex-start;
   margin-left: 15px;
+  padding: 5px;
   border-left: 1px solid black;
-}
-
-.comment:not(:first-child) {
-  border-top: 1px solid black;
 }

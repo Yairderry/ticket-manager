@@ -21,15 +21,17 @@ export default function Ticket({
       <Content title={title} content={content} />
       <Info labels={labels} userEmail={userEmail} creationTime={creationTime} />
       <div className="options">
-        <button className="hideTicketButton" onClick={() => hide(id)}>
+        <span className="hideTicketButton" onClick={() => hide(id)}>
           hide
-        </button>
+        </span>
       </div>
       <div className="buttons">
-        <button className="showButton" onClick={showMore}>
+        <span className="showButton button" onClick={showMore}>
           show
-        </button>
-        <button onClick={showComments}>💬 {comments && comments.length}</button>
+        </span>
+        <span className="fa fa-comments button" onClick={showComments}>
+          {comments && comments.length}
+        </span>
       </div>
       <Comments
         comments={comments}

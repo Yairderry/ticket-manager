@@ -2,6 +2,8 @@ import React from "react";
 import NewTicketForm from "./NewTicketForm";
 import SearchArea from "./SearchArea";
 
+import "../styles/Header.css";
+
 export default function Header({
   filterTickets,
   hiddenTickets,
@@ -20,13 +22,12 @@ export default function Header({
       <button id="restoreHideTickets" onClick={restoreTicketsList}>
         Restore
       </button>
-      <button
+      <span
+        className="fa fa-plus-circle fa-3x addTicket"
         onClick={(e) => {
           e.target.parentElement.firstChild.classList.remove("hideForm");
         }}
-      >
-        Add Ticket
-      </button>
+      ></span>
     </header>
   );
 }

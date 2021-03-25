@@ -11,7 +11,9 @@ export default function Comment({
 }) {
   return (
     <div className="comment">
-      <p>{userEmail}</p>
+      <p>
+        <b>{userEmail}</b>
+      </p>
       <p>{content}</p>
       <Reply
         handleCommentSubmit={handleCommentSubmit}
