@@ -38,6 +38,10 @@
   right: 7px;
 }
 
+.exitButton:hover {
+  font-weight: 500;
+}
+
 .hideForm {
   display: none;
 }

@@ -12,3 +12,12 @@
   outline: none;
   border: none;
 }
+
+#restoreHideTickets {
+  color: rgb(110, 110, 224);
+}
+
+#restoreHideTickets:hover {
+  color: rgb(65, 65, 211);
+  text-decoration: underline;
+}

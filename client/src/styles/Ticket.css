@@ -11,6 +11,14 @@
   margin: 10px 0px;
 }
 
+.ticket:hover .options {
+  display: block;
+}
+
+.hideTicketButton:hover {
+  font-weight: 500;
+}
+
 .ticketContent {
   text-align: left;
   display: flex;
@@ -53,6 +61,7 @@
 }
 
 .options {
+  display: none;
   position: absolute;
   top: 15px;
   right: 15px;

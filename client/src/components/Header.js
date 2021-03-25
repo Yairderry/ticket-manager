@@ -18,10 +18,12 @@ export default function Header({
       <p>
         Hidden Tickets:{" "}
         <span id="hideTicketsCounter">{hiddenTickets.length}</span>
+        {hiddenTickets.length > 0 && (
+          <span id="restoreHideTickets" onClick={restoreTicketsList}>
+            Restore
+          </span>
+        )}
       </p>
-      <button id="restoreHideTickets" onClick={restoreTicketsList}>
-        Restore
-      </button>
       <span
         className="fa fa-plus-circle fa-3x addTicket"
         onClick={(e) => {
