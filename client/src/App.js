@@ -14,6 +14,37 @@ function App() {
   const [error, setError] = useState({ error: false, message: "" });
   const [loader, setLoader] = useState(false);
 
+  async function handleCommentSubmit(e, ticketId, commentId) {
+    e.preventDefault();
+    const form = e.target;
+
+    setLoader(true);
+
+    const formData = new FormData(form);
+
+    const data = {};
+    for (let [key, value] of formData.entries()) {
+      data[key] = value;
+    }
+
+    form.reset();
+
+    try {
+      await axios.patch(
+        `/api/tickets/${ticketId}/reply?commentId=${commentId}`,
+        data
+      );
+      const searchInput = document.querySelector("#searchInput");
+      await filterTickets(searchInput);
+    } catch (err) {
+      setLoader(false);
+      setError({
+        error: true,
+        message: err.response.data.error,
+      });
+    }
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     const form = e.target;
@@ -114,7 +145,11 @@ function App() {
         hiddenTickets={hiddenTickets}
         handleSubmit={handleSubmit}
       />
-      <Tickets tickets={tickets} hide={hide} />
+      <Tickets
+        tickets={tickets}
+        hide={hide}
+        handleCommentSubmit={handleCommentSubmit}
+      />
     </div>
   );
 }

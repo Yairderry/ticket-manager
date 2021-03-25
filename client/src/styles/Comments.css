@@ -1,0 +1,13 @@
+.comment {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-left: 15px;
+  border-left: 1px solid black;
+}
+
+.comment:not(:first-child) {
+  border-top: 1px solid black;
+}

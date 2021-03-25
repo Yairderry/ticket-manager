@@ -7,6 +7,14 @@ const ticketSchema = new mongoose.Schema({
   done: { type: Boolean, default: false },
   creationTime: { type: Date, default: new Date().getTime() },
   labels: [{ type: String }],
+  comments: [
+    {
+      id: { type: String },
+      content: { type: String, required: true },
+      userEmail: { type: String, default: "Anonymous" },
+      comments: Array,
+    },
+  ],
 });
 
 ticketSchema.set("toJSON", {
