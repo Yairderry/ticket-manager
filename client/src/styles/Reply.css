@@ -9,6 +9,7 @@
 
 .replyInputs {
   background-color: rgb(235, 235, 235);
+  display: flex;
 }
 
 .replyInput {
@@ -30,4 +31,14 @@
 
 .replyButton:active {
   outline: none;
+}
+
+@media (max-width: 900px) {
+  .reply {
+    width: 60vw;
+  }
+
+  .replyInput {
+    width: 27vw;
+  }
 }

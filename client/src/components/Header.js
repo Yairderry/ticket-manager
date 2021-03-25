@@ -25,7 +25,7 @@ export default function Header({
         )}
       </p>
       <span
-        className="fa fa-plus-circle fa-3x addTicket"
+        className="fa fa-plus-circle fa-4x addTicket"
         onClick={(e) => {
           e.target.parentElement.firstChild.classList.remove("hideForm");
         }}
