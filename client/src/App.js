@@ -63,6 +63,8 @@ function App() {
       }
     }
 
+    form.reset();
+
     try {
       await axios.post("/api/tickets/new-ticket", data);
       const searchInput = document.querySelector("#searchInput");

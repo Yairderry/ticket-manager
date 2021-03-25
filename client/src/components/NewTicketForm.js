@@ -3,6 +3,19 @@ import React from "react";
 import "../styles/NewTicketForm.css";
 
 export default function NewTicketForm({ handleSubmit }) {
+  const labels = [
+    "Help",
+    "Tech",
+    "Guidelines",
+    "Corvid",
+    "Api",
+    "Collapse",
+    "Expand",
+    "Problem",
+    "Login",
+    "Tutorial",
+    "View Count",
+  ];
   return (
     <div className="blurBackground hideForm">
       <form className="newTicketForm" onSubmit={handleSubmit}>
@@ -14,7 +27,9 @@ export default function NewTicketForm({ handleSubmit }) {
         >
           X
         </span>
-        <label htmlFor="userEmail">Email</label>
+        <label className="formLabel" htmlFor="userEmail">
+          Email
+        </label>
         <input
           className="newTicketInput"
           type="email"
@@ -22,7 +37,9 @@ export default function NewTicketForm({ handleSubmit }) {
           id="userEmail"
           autoComplete="off"
         />
-        <label htmlFor="title">Title</label>
+        <label className="formLabel" htmlFor="title">
+          Title
+        </label>
         <input
           className="newTicketInput"
           name="title"
@@ -30,20 +47,28 @@ export default function NewTicketForm({ handleSubmit }) {
           autoComplete="off"
           required
         />
-        <label htmlFor="content">Content</label>
-        <input
+        <label className="formLabel" htmlFor="content">
+          Content
+        </label>
+        <textarea
           className="newTicketInput"
           name="content"
           id="content"
           autoComplete="off"
+          rows="6"
+          cols="50"
         />
-        <label htmlFor="labels">labels</label>
+        <label className="formLabel" htmlFor="labels">
+          labels
+        </label>
         <select className="newTicketInput" name="labels" id="labels" multiple>
-          <option value="asdf">asdf</option>
-          <option value="qwer">qwer</option>
-          <option value="zxcv">zxcv</option>
+          {labels.map((label, i) => (
+            <option key={i} value={label}>
+              {label}
+            </option>
+          ))}
         </select>
-        <input type="submit" value="Submit" />
+        <input className="submitTicket" type="submit" value="Submit" />
       </form>
     </div>
   );

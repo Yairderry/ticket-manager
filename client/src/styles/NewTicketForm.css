@@ -19,10 +19,17 @@
   border-radius: 5px;
   padding: 20px;
   position: relative;
+  height: 50vh;
+  width: fit-content;
+}
+
+.formLabel {
+  align-self: start;
 }
 
 .newTicketInput {
   display: block;
+  width: 100%;
 }
 
 .exitButton {
@@ -33,4 +40,8 @@
 
 .hideForm {
   display: none;
+}
+
+.submitTicket {
+  margin: 5px;
 }
