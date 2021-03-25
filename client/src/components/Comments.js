@@ -7,7 +7,7 @@ import Reply from "./Reply.js";
 export default function Comments({ comments, ticketId, handleCommentSubmit }) {
   return (
     <div className="comments hide">
-      {comments.length > 0 ? (
+      {comments && comments.length > 0 ? (
         comments.map(({ content, comments, userEmail, id }, i) => (
           <Comment
             key={i}
