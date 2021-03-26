@@ -1,0 +1,52 @@
+.blurBackground {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+.newTicketForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: blanchedalmond;
+  text-align: left;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  position: relative;
+  height: 50vh;
+  width: fit-content;
+}
+
+.formLabel {
+  align-self: start;
+}
+
+.newTicketInput {
+  display: block;
+  width: 100%;
+  resize: none;
+}
+
+.exitButton {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+}
+
+.exitButton:hover {
+  font-weight: 500;
+}
+
+.hideForm {
+  display: none;
+}
+
+.submitTicket {
+  margin: 5px;
+}

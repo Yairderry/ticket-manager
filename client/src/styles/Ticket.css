@@ -1,0 +1,78 @@
+.ticket {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 90vw;
+  height: 95%;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 15px;
+  padding-bottom: 5px;
+  margin: 10px 0px;
+  overflow: hidden;
+}
+
+.ticket:hover .options {
+  display: block;
+}
+
+.hideTicketButton:hover {
+  font-weight: 500;
+}
+
+.ticketContent {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0px;
+  max-height: 15vh;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+
+.buttons {
+  align-self: flex-end;
+}
+
+.button {
+  margin: 5px;
+}
+
+.showMore {
+  max-height: fit-content;
+  overflow: auto;
+}
+
+.showButton::after {
+  content: " more";
+}
+
+.showLess::after {
+  content: " less";
+}
+
+.ticketInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment {
+  justify-self: left;
+}
+
+.options {
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.hide {
+  display: none;
+}
+@media (max-width: 900px) {
+  .options {
+    display: block;
+  }
+}

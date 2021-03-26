@@ -1,0 +1,44 @@
+.reply {
+  border: 1px solid black;
+  width: fit-content;
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 5px;
+}
+
+.replyInputs {
+  background-color: rgb(235, 235, 235);
+  display: flex;
+}
+
+.replyInput {
+  border: none;
+  background-color: transparent;
+  height: 100%;
+  border-left: 1px solid black;
+}
+
+.replyInput:focus {
+  outline: none;
+}
+
+.replyButton {
+  background-color: transparent;
+  border: none;
+  padding: 5px;
+}
+
+.replyButton:active {
+  outline: none;
+}
+
+@media (max-width: 900px) {
+  .reply {
+    width: 60vw;
+  }
+
+  .replyInput {
+    width: 27vw;
+  }
+}

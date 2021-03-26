@@ -1,0 +1,35 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.scrollUp,
+.addTicket {
+  position: fixed;
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  z-index: 4;
+}
+
+.scrollUp {
+  top: 30px;
+  right: 30px;
+}
+.addTicket {
+  bottom: 30px;
+  right: 30px;
+}
+
+.addTicket:active {
+  outline: none;
+  border: none;
+}
+
+#restoreHideTickets {
+  color: rgb(110, 110, 224);
+}
+
+#restoreHideTickets:hover {
+  color: rgb(65, 65, 211);
+  text-decoration: underline;
+}
