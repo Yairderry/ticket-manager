@@ -30,7 +30,14 @@ export default function Header({
         onClick={(e) => {
           e.target.parentElement.firstChild.classList.remove("hideForm");
         }}
-      ></span>
+      />
+      <span
+        className="fa fa-arrow-circle-up fa-4x scrollUp"
+        onClick={() => {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+        }}
+      />
     </header>
   );
 }

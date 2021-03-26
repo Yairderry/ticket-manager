@@ -1,11 +1,23 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.scrollUp,
 .addTicket {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
   background-color: white;
   border: none;
   border-radius: 50%;
   z-index: 4;
+}
+
+.scrollUp {
+  top: 30px;
+  right: 30px;
+}
+.addTicket {
+  bottom: 30px;
+  right: 30px;
 }
 
 .addTicket:active {
