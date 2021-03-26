@@ -13,6 +13,7 @@ function App() {
   const [restoreList, setRestore] = useState([]);
   const [error, setError] = useState({ error: false, message: "" });
   const [loader, setLoader] = useState(false);
+  const [filters, setFilters] = useState([]);
 
   async function handleCommentSubmit(e, ticketId, commentId) {
     e.preventDefault();
@@ -78,10 +79,28 @@ function App() {
     }
   }
 
-  function showNotHiddenTickets(updatedTicketsList, hiddenTicketsList) {
+  function showNotHiddenTickets(
+    updatedTicketsList,
+    hiddenTicketsList,
+    filters
+  ) {
     const filteredList = updatedTicketsList.filter(
       ({ id }) => !hiddenTicketsList.includes(id)
     );
+
+    if (filters.length > 0) {
+      const newFilteredList = filteredList.filter(({ labels }) => {
+        if (labels.length > 0) {
+          for (let i = 0; i < labels.length; i++) {
+            if (filters.includes(labels[i])) return true;
+          }
+        }
+      });
+
+      setTickets(newFilteredList);
+      setLoader(false);
+      return;
+    }
 
     setTickets(filteredList);
     setLoader(false);
@@ -90,7 +109,7 @@ function App() {
   function hide(id) {
     const newHiddenTickets = hiddenTickets.concat(id);
 
-    showNotHiddenTickets(tickets, newHiddenTickets);
+    showNotHiddenTickets(tickets, newHiddenTickets, filters);
     setHiddenTickets(newHiddenTickets);
   }
 
@@ -99,13 +118,26 @@ function App() {
     setHiddenTickets([]);
   }
 
+  function addFilter(e) {
+    const filter = e.target;
+    const label = filter.textContent;
+
+    filter.classList.toggle("checked");
+    const newFilters = filters.includes(label)
+      ? filters.filter((aLabel) => aLabel !== label)
+      : filters.concat(label);
+
+    setFilters(newFilters);
+    showNotHiddenTickets(restoreList, hiddenTickets, newFilters);
+  }
+
   function filterTickets(target) {
     setLoader(true);
     axios
       .get(`/api/tickets?searchText=${target.value}`)
       .then(({ data }) => {
         setRestore(data);
-        showNotHiddenTickets(data, hiddenTickets);
+        showNotHiddenTickets(data, hiddenTickets, filters);
       })
       .catch(() => {
         setLoader(false);
@@ -146,6 +178,7 @@ function App() {
         restoreTicketsList={restoreTicketsList}
         hiddenTickets={hiddenTickets}
         handleSubmit={handleSubmit}
+        addFilter={addFilter}
       />
       <Tickets
         tickets={tickets}

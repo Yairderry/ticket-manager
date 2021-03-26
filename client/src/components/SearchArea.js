@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/SearchArea.css";
 
-export default function SearchArea({ filterTickets }) {
+export default function SearchArea({ filterTickets, addFilter }) {
   const labels = [
     "Help",
     "Tech",
@@ -27,7 +27,12 @@ export default function SearchArea({ filterTickets }) {
         <span className="dropBtn">Filter By Labels</span>
         <div className="dropdown-content">
           {labels.map((label, i) => (
-            <span className="labelFilter" key={i} value={label}>
+            <span
+              className="labelFilter"
+              onClick={addFilter}
+              key={i}
+              value={label}
+            >
               {label}
             </span>
           ))}

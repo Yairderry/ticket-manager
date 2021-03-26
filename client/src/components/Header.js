@@ -9,12 +9,13 @@ export default function Header({
   hiddenTickets,
   restoreTicketsList,
   handleSubmit,
+  addFilter,
 }) {
   return (
     <header>
       <NewTicketForm handleSubmit={handleSubmit} />
       <h1>Ticket Manager</h1>
-      <SearchArea filterTickets={filterTickets} />
+      <SearchArea filterTickets={filterTickets} addFilter={addFilter} />
       <p>
         Hidden Tickets:{" "}
         <span id="hideTicketsCounter">{hiddenTickets.length}</span>
