@@ -114,7 +114,19 @@ function App() {
   }
 
   function restoreTicketsList() {
-    setTickets(restoreList);
+    let filteredList = restoreList;
+
+    if (filters.length > 0) {
+      filteredList = restoreList.filter(({ labels }) => {
+        if (labels.length > 0) {
+          for (let i = 0; i < labels.length; i++) {
+            if (filters.includes(labels[i])) return true;
+          }
+        }
+      });
+    }
+
+    setTickets(filteredList);
     setHiddenTickets([]);
   }
 
