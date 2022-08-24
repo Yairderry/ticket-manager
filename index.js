@@ -7,6 +7,8 @@ const MONGO_URI =
   env === "test" ? process.env.TEST_MONGO_URI : process.env.MONGO_URI;
 const PORT = process.env.PORT || 8080;
 
+console.log("testy test");
+
 mongoose
   .connect(MONGO_URI, {
     useNewUrlParser: true,
