@@ -2,7 +2,7 @@
 
 In this project i created a Ticket Manager Web Application, with the [MERN stack](https://www.educative.io/edpresso/what-is-mern-stack)
 
-Link to the heroku app [here](https://ticket-manager-yair.herokuapp.com/)
+Link to the heroku app [here](https://ticketmanager.onrender.com/)
 
 ## Backend
 
